@@ -1,3 +1,4 @@
+let btnRefresh = document.querySelector(".btn-refresh");
 let loadingHTML = document.querySelector(".loading");
 let cardHTML = document.getElementById("card");
 let cityHTML = document.querySelector(".city");
@@ -55,9 +56,26 @@ async function getWeather(lat, long) {
 }
 
 function degToCompass(num) {
-    var val = Math.floor((num / 22.5) + 0.5);
-    var arr = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
-    return arr[(val % 16)];
+  var val = Math.floor(num / 22.5 + 0.5);
+  var arr = [
+    "N",
+    "NNE",
+    "NE",
+    "ENE",
+    "E",
+    "ESE",
+    "SE",
+    "SSE",
+    "S",
+    "SSW",
+    "SW",
+    "WSW",
+    "W",
+    "WNW",
+    "NW",
+    "NNW",
+  ];
+  return arr[val % 16];
 }
 
 function setWeatherToView() {
@@ -67,7 +85,9 @@ function setWeatherToView() {
   temperatureHTML.innerHTML = weather.current_weather.temperature + "&deg;";
   weatherCodeHTML.innerHTML = weatherCodes[weather.current_weather.weathercode];
   windspeedHTML.innerHTML = weather.current_weather.windspeed + " km/h";
-  winddirectionHTML.innerHTML = degToCompass(weather.current_weather.winddirection);
+  winddirectionHTML.innerHTML = degToCompass(
+    weather.current_weather.winddirection
+  );
   cardHTML.style.backgroundImage = `url(./assets/${weather.current_weather.weathercode}.jpg)`;
 
   if (!city) {
@@ -110,3 +130,7 @@ async function init() {
 }
 getLocation();
 init();
+
+btnRefresh.addEventListener("click", () => {
+  init();
+});

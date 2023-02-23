@@ -127,6 +127,7 @@ table {
 }
 
 .card {
+    position: relative;
     background-color: white;
     color: white;
     width: 400px;
@@ -136,6 +137,14 @@ table {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+
+.btn-refresh{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    user-select: none;
 }
 
 .center {
