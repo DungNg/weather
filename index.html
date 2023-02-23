@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap" rel="stylesheet">
+    <title>Weather</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="loading lds-ring">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div id="card" class="card">
+            <div class="center city"></div>
+            <div class="center temperature"></div>
+            <div class="center weatherCode"></div>
+            <div class="block-container">
+                <div class="center block">
+                    <div>
+                        Wind Speed
+                        <span style="font-size:
+                        .8rem" class=" material-icons">
+                            air
+                        </span>
+                    </div>
+                    <div class="center windspeed"></div>
+                </div>
+                <div class="center block">
+                    <div>
+                        Wind Direction
+                        <span style="font-size:
+                        .8rem" class=" material-icons">
+                            near_me
+                        </span>
+                    </div>
+                    <div class="center winddirection"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="model.js"></script>
+    <script src="weatherCodes.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
