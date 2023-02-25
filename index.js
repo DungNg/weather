@@ -96,22 +96,19 @@ function setWeatherToView() {
   cityHTML.innerHTML = `${city.locality}, ${city.city}`;
 }
 
-function showAndHideCard(isShowCard) {
-  if (isShowCard) {
-    cardHTML.classList.add("show");
-    cardHTML.classList.remove("hide");
-    loadingHTML.classList.add("hide");
-    loadingHTML.classList.remove("show");
-  } else {
-    cardHTML.classList.add("hide");
-    cardHTML.classList.remove("show");
-    loadingHTML.classList.add("show");
-    loadingHTML.classList.remove("hide");
-  }
+function show(htmlElement) {
+  htmlElement.classList.remove("hide");
+  htmlElement.classList.add("show");
+}
+
+function hide(htmlElement) {
+  htmlElement.classList.remove("show");
+  htmlElement.classList.add("hide");
 }
 
 async function init() {
-  showAndHideCard(false);
+  show(loadingHTML);
+  hide(cardHTML);
   let waitForLocationLoop = setInterval(async () => {
     if (currentLocation) {
       await getCity(
@@ -124,7 +121,8 @@ async function init() {
       );
       setWeatherToView();
       clearInterval(waitForLocationLoop);
-      showAndHideCard(true);
+      hide(loadingHTML);
+      show(cardHTML);
     }
   }, 1000);
 }
